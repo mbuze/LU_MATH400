@@ -1,0 +1,11 @@
+*.ipynb_checkpoints/
+
+.ipynb_checkpoints/
+
+notebooks/not_public_yet/
+
+_build/html/notebooks/not_public_yet/
+
+_build/jupyter_execute/notebooks/not_public_yet/
+
+_build/.doctrees/notebooks/not_public_yet/
