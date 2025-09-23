@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: notebooks/1-getting-started
+- file: notebooks/2-python-for-data-manipulation
+- file: notebooks/3-variables-expressions-statements
+- file: notebooks/4-functions
+- file: notebooks/5-lists
+- file: notebooks/6-flow-control-checkpoint
+- file: notebooks/7-tuples
+- file: notebooks/8-dictionaries
+- file: notebooks/9-numpy
+- file: notebooks/10-python-summary
+- file: notebooks/11-further-exercises
+- file: notebooks/12-further-reading
+#- file: notebooks/13-assessment-1
+#- file: notebooks/14-assessment-2
+#- file: notebooks/15-assessment-3
