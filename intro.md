@@ -23,8 +23,7 @@ Lecturer: [Maciej Buze](mailto:m.buze@lancaster.ac.uk)
 - Week 10 (10 December)
 
 
-Location: PSC Lab X
-
+Location: SAT - Science & Technology PC Lab A008
 Time: 9am-11am
 
 ## Assessment
