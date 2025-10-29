@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -192,6 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10-python-summary.html">Appendix - Overview of Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11-further-exercises.html">Further Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12-further-reading.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-b-working-with-markdown.html">Markdown cells</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13-assessment-1.html">Assessment 1</a></li>
 </ul>
 
@@ -810,7 +811,10 @@ Dot product: 140
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vertical stack: [[1 2 3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vertical stack:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [[1 2 3]
  [4 5 6]]
 Horizontal stack: [1 2 3 4 5 6]
 Stack along new axis: [[1 4]
@@ -954,9 +958,9 @@ Column 2: [[85]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random floats: [0.59998726 0.27748404 0.259893  ]
-Random integers: [7 4 6 4 6]
-Normal distribution: [ 1.17387009 -1.2749779  -0.01428007]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random floats: [0.31276805 0.71584904 0.83740793]
+Random integers: [5 2 3 2 9]
+Normal distribution: [ 0.11202882 -2.02029442 -1.02482632]
 </pre></div>
 </div>
 </div>
@@ -991,16 +995,16 @@ Normal distribution: [ 1.17387009 -1.2749779  -0.01428007]
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original: [[0.09595414 0.76224803 0.52655058 0.47985758 0.84058143]
- [0.85066934 0.32767759 0.57821184 0.90023578 0.85016163]
- [0.10100673 0.18004007 0.50454502 0.94257915 0.02625017]
- [0.07656193 0.60515262 0.07440375 0.81939925 0.18557224]
- [0.47010098 0.65439123 0.03224257 0.18010639 0.16897393]]
-Thresholded: [[0. 1. 1. 0. 1.]
- [1. 0. 1. 1. 1.]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original: [[0.80859819 0.11525635 0.61527926 0.46064852 0.16253112]
+ [0.21523537 0.48941579 0.56958003 0.58851292 0.29597962]
+ [0.11167896 0.8569468  0.41732105 0.10478736 0.42694375]
+ [0.75666401 0.0590541  0.28864665 0.63349383 0.31707022]
+ [0.83730703 0.6130456  0.93296116 0.47245651 0.33278182]]
+Thresholded: [[1. 0. 1. 0. 0.]
  [0. 0. 1. 1. 0.]
- [0. 1. 0. 1. 0.]
- [0. 1. 0. 0. 0.]]
+ [0. 1. 0. 0. 0.]
+ [1. 0. 0. 1. 0.]
+ [1. 1. 1. 0. 0.]]
 </pre></div>
 </div>
 </div>
@@ -1062,7 +1066,7 @@ Thresholded: [[0. 1. 1. 0. 1.]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python list time: 0.3858 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python list time: 0.3402 seconds
 </pre></div>
 </div>
 </div>
@@ -1078,7 +1082,7 @@ Thresholded: [[0. 1. 1. 0. 1.]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NumPy array time: 0.0149 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NumPy array time: 0.0144 seconds
 </pre></div>
 </div>
 </div>
