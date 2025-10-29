@@ -16,6 +16,6 @@ chapters:
 - file: notebooks/10-python-summary
 - file: notebooks/11-further-exercises
 - file: notebooks/12-further-reading
-#- file: notebooks/13-assessment-1
+- file: notebooks/13-assessment-1
 #- file: notebooks/14-assessment-2
 #- file: notebooks/15-assessment-3
