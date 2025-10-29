@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -194,6 +194,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10-python-summary.html">Appendix - Overview of Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11-further-exercises.html">Further Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12-further-reading.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-b-working-with-markdown.html">Markdown cells</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13-assessment-1.html">Assessment 1</a></li>
 </ul>
 
@@ -527,9 +528,7 @@ Requirement already satisfied: numpy&gt;=1.26.0 in /home/buze/miniforge3/lib/pyt
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/buze/miniforge3/lib/python3.12/site-packages (from pandas) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in /home/buze/miniforge3/lib/python3.12/site-packages (from pandas) (2024.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in /home/buze/miniforge3/lib/python3.12/site-packages (from pandas) (2025.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /home/buze/miniforge3/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Requirement already satisfied: six&gt;=1.5 in /home/buze/miniforge3/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
 </pre></div>
 </div>
 </div>
@@ -44890,7 +44889,7 @@ Requirement already satisfied: tzdata&gt;=2022.7 in /home/buze/miniforge3/lib/py
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x756c26d897f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x72119c1bde20&gt;
 </pre></div>
 </div>
 <img alt="../_images/6bd09fca01344c7798822c23408d4f288f9e77dabc48d3da7e36baf443122cb4.png" src="../_images/6bd09fca01344c7798822c23408d4f288f9e77dabc48d3da7e36baf443122cb4.png" />
@@ -44919,7 +44918,7 @@ Requirement already satisfied: tzdata&gt;=2022.7 in /home/buze/miniforge3/lib/py
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bd88cf5ded5aafa3c90ed03c9d12bf84eb9f6c7da9f52f8e5a47d1172c42a930.png" src="../_images/bd88cf5ded5aafa3c90ed03c9d12bf84eb9f6c7da9f52f8e5a47d1172c42a930.png" />
+<img alt="../_images/f70aa9708229ca33034cc2c8110c5aeab6e32f9309ecd45c11a7e0d9d02921a2.png" src="../_images/f70aa9708229ca33034cc2c8110c5aeab6e32f9309ecd45c11a7e0d9d02921a2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -45813,7 +45812,7 @@ class OLS(WLS)
   <th>Date:</th>             <td>Wed, 29 Oct 2025</td> <th>  Prob (F-statistic):</th> <td>2.84e-22</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>09:19:46</td>     <th>  Log-Likelihood:    </th> <td> -268.46</td>
+  <th>Time:</th>                 <td>11:24:48</td>     <th>  Log-Likelihood:    </th> <td> -268.46</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    41</td>      <th>  AIC:               </th> <td>   540.9</td>
@@ -46122,11 +46121,11 @@ class OLS(WLS)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001624198931373888
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_87440/2509811719.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_258407/2509811719.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   dfd = ozone_describe.iloc[0][0] - 1
-/tmp/ipykernel_87440/2509811719.py:3: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+/tmp/ipykernel_258407/2509811719.py:3: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   dfn = ozone_describe.iloc[0][1] - 1
-/tmp/ipykernel_87440/2509811719.py:4: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+/tmp/ipykernel_258407/2509811719.py:4: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   ratio = ozone_data.var()[1]/ozone_data.var()[0]
 </pre></div>
 </div>
@@ -46151,7 +46150,7 @@ class OLS(WLS)
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_87440/1518339016.py:1: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_258407/1518339016.py:1: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   ozone_data.var()[0]
 </pre></div>
 </div>
