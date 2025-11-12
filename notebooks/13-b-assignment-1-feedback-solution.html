@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Assignment 1: Feedback and model solution &#8212; MATH400 Statistics in Practice - Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/13-b-assignment-1-feedback-solution';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assessment 2" href="14-assessment-2.html" />
+    <link rel="prev" title="Assessment 1" href="13-assessment-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MATH400 Statistics in Practice - Python - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MATH400 Statistics in Practice - Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Statistics in Practice - Python 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1-getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-python-for-data-manipulation.html">Overview: Python for data manipulation and data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-variables-expressions-statements.html">Variables, expressions and statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-flow-control-checkpoint.html">Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-tuples.html">Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-python-summary.html">Appendix - Overview of Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-further-exercises.html">Further Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-further-reading.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-b-working-with-markdown.html">Markdown cells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-assessment-1.html">Assessment 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment 1: Feedback and model solution</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14-assessment-2.html">Assessment 2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mbuze/LU_MATH400" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mbuze/LU_MATH400/issues/new?title=Issue%20on%20page%20%2Fnotebooks/13-b-assignment-1-feedback-solution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/13-b-assignment-1-feedback-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment 1: Feedback and model solution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 1: Feedback and model solution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">Feedback</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solution">Model solution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-1">Part 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-2">Part 1.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-3">Part 1.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-4">Part 1.4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="assignment-1-feedback-and-model-solution">
+<h1>Assignment 1: Feedback and model solution<a class="headerlink" href="#assignment-1-feedback-and-model-solution" title="Link to this heading">#</a></h1>
+<p>In this notebook I will provide general feedback on the assignment, followed by a model solution.</p>
+</section>
+<section id="feedback">
+<h1>Feedback<a class="headerlink" href="#feedback" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Everyone submitted working code, congratulations!</p></li>
+<li><p>Barring small issues here and there, you have all managed to solve the questions pretty well!</p></li>
+<li><p>Almost nobody referenced their sources and the presentation was mostly minimal, with little explanation of the thought process. In the age of AI this aspect is of outmost importance: you have to be able to demonstrate that you understand the assignment and that, if an AI helper was to hallucinate on a more difficult task, you would be able to correct it. This will be particularly important when you start recruiting for jobs and this is what we are trying to teach you in this and courses!</p></li>
+<li><p>Emphasis on how you present your work also nicely connects to the other part of the module: try to approach Python assignments using tools you learn there!</p></li>
+<li><p>One way to improve presentation is to use Markdown much more (see model solution below).</p></li>
+</ul>
+</section>
+<section id="model-solution">
+<h1>Model solution<a class="headerlink" href="#model-solution" title="Link to this heading">#</a></h1>
+<p>In this assignment I am tasked with discussing the notion of a distance for two-dimensional data points and the aim is to test my understanding from the content of the notes from Session 1 &amp; 2.</p>
+<section id="part-1-1">
+<h2>Part 1.1<a class="headerlink" href="#part-1-1" title="Link to this heading">#</a></h2>
+<p>I have two points <code class="docutils literal notranslate"><span class="pre">p_i</span> <span class="pre">=</span> <span class="pre">(x_i,y_i)</span></code> and <code class="docutils literal notranslate"><span class="pre">p_j</span> <span class="pre">=</span> <span class="pre">(x_j,y_j)</span></code> in two dimensional space:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define coordinates</span>
+<span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">x_j</span><span class="p">,</span> <span class="n">y_j</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Euclidean distance formula is</p>
+<p><code class="docutils literal notranslate"><span class="pre">d_ij</span> <span class="pre">=</span> <span class="pre">((x_i-x_j)^2</span> <span class="pre">+</span> <span class="pre">(y_i</span> <span class="pre">-</span> <span class="pre">y_j)^2)^(1/2)</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute Euclidean distance</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="p">((</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">x_j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">-</span> <span class="n">y_j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and I can print the resulting as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The distance between points (</span><span class="si">{</span><span class="n">x_i</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_i</span><span class="si">}</span><span class="s2">) and (</span><span class="si">{</span><span class="n">x_j</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_j</span><span class="si">}</span><span class="s2">) is </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The distance between points (2, 3) and (7, 1) is 5.39
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here to make the printed result nicer I am rounding the displayed distance to two decimal points. I have consulted</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/5202233/how-to-change-39-54484700000000-to-39-54-and-using-python">https://stackoverflow.com/questions/5202233/how-to-change-39-54484700000000-to-39-54-and-using-python</a></p>
+<p>to achieve that. Indeed, the full distance has far more decimal points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.385164807134504
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-1-2">
+<h2>Part 1.2<a class="headerlink" href="#part-1-2" title="Link to this heading">#</a></h2>
+<p>Building on from Part 1.1, I am supposed to wrap the Euclidean distance formula I applied into a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_distance</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">,</span> <span class="n">x_j</span><span class="p">,</span> <span class="n">y_j</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the Euclidean distance between two 2D points.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">x_j</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">-</span> <span class="n">y_j</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In particular, I have consulted</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/21930035/how-to-write-help-description-text-for-python-functions">https://stackoverflow.com/questions/21930035/how-to-write-help-description-text-for-python-functions</a></p>
+<p>on how to describe functions, allowing a user to check what the function does by invoking:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">calculate_distance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function calculate_distance in module __main__:
+
+calculate_distance(x_i, y_i, x_j, y_j)
+    Return the Euclidean distance between two 2D points.
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next task is to test the function for four sets of coordinates. I will reuse the ones already defined:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span><span class="n">y_i</span><span class="p">,</span><span class="n">x_j</span><span class="p">,</span><span class="n">y_j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 3, 7, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>and define three further sets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_11</span><span class="p">,</span> <span class="n">y_11</span><span class="p">,</span> <span class="n">x_12</span><span class="p">,</span> <span class="n">y_12</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">x_21</span><span class="p">,</span> <span class="n">y_21</span><span class="p">,</span> <span class="n">x_22</span><span class="p">,</span> <span class="n">y_22</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">x_31</span><span class="p">,</span> <span class="n">y_31</span><span class="p">,</span> <span class="n">x_32</span><span class="p">,</span> <span class="n">y_32</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now I can print the results together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The distance between points (</span><span class="si">{</span><span class="n">x_i</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_i</span><span class="si">}</span><span class="s2">) and (</span><span class="si">{</span><span class="n">x_j</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_j</span><span class="si">}</span><span class="s2">) is </span><span class="si">{</span><span class="n">calculate_distance</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span><span class="n">y_i</span><span class="p">,</span><span class="n">x_j</span><span class="p">,</span><span class="n">y_j</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The distance between points (</span><span class="si">{</span><span class="n">x_11</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_11</span><span class="si">}</span><span class="s2">) and (</span><span class="si">{</span><span class="n">x_12</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_12</span><span class="si">}</span><span class="s2">) is </span><span class="si">{</span><span class="n">calculate_distance</span><span class="p">(</span><span class="n">x_11</span><span class="p">,</span><span class="n">y_11</span><span class="p">,</span><span class="n">x_12</span><span class="p">,</span><span class="n">y_12</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The distance between points (</span><span class="si">{</span><span class="n">x_21</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_21</span><span class="si">}</span><span class="s2">) and (</span><span class="si">{</span><span class="n">x_22</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_22</span><span class="si">}</span><span class="s2">) is </span><span class="si">{</span><span class="n">calculate_distance</span><span class="p">(</span><span class="n">x_21</span><span class="p">,</span><span class="n">y_21</span><span class="p">,</span><span class="n">x_22</span><span class="p">,</span><span class="n">y_22</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The distance between points (</span><span class="si">{</span><span class="n">x_31</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_31</span><span class="si">}</span><span class="s2">) and (</span><span class="si">{</span><span class="n">x_32</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_32</span><span class="si">}</span><span class="s2">) is </span><span class="si">{</span><span class="n">calculate_distance</span><span class="p">(</span><span class="n">x_31</span><span class="p">,</span><span class="n">y_31</span><span class="p">,</span><span class="n">x_32</span><span class="p">,</span><span class="n">y_32</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The distance between points (2, 3) and (7, 1) is 5.39
+The distance between points (0, 0) and (3, 4) is 5.00
+The distance between points (-1, -1) and (1, 1) is 2.83
+The distance between points (1, 2) and (3, 4) is 2.83
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-1-3">
+<h2>Part 1.3<a class="headerlink" href="#part-1-3" title="Link to this heading">#</a></h2>
+<p>In this exercise I am asked to combine together Parts 1.1 and 1.2. To do so, I define a function that takes a function computing a distance and coordinates of two points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_distance</span><span class="p">(</span><span class="n">distance_function</span><span class="p">,</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">,</span> <span class="n">x_j</span><span class="p">,</span> <span class="n">y_j</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute and print distance using a provided distance function.&quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">distance_function</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">,</span> <span class="n">x_j</span><span class="p">,</span> <span class="n">y_j</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="n">distance_function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">, distance between (</span><span class="si">{</span><span class="n">x_i</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">y_i</span><span class="si">}</span><span class="s2">) and (</span><span class="si">{</span><span class="n">x_j</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">y_j</span><span class="si">}</span><span class="s2">) is </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In particular, I consulted</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/251464/how-to-get-a-function-name-as-a-string">https://stackoverflow.com/questions/251464/how-to-get-a-function-name-as-a-string</a></p>
+<p>to know how to get a function name as a string.</p>
+<p>Let’s see if it works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_distance</span><span class="p">(</span><span class="n">calculate_distance</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">print_distance</span><span class="p">(</span><span class="n">calculate_distance</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using calculate_distance, distance between (0,0) and (3,4) is 5.00.
+Using calculate_distance, distance between (-2,-3) and (4,1) is 7.21.
+</pre></div>
+</div>
+</div>
+</div>
+<p>To check that the function <code class="docutils literal notranslate"><span class="pre">print_distance</span></code> can work with other “distance” functions, I now define a fake distance function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define an alternative (fake) distance function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fake_distance</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">,</span> <span class="n">x_j</span><span class="p">,</span> <span class="n">y_j</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and I now verify that all works as intended:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_distance</span><span class="p">(</span><span class="n">fake_distance</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">print_distance</span><span class="p">(</span><span class="n">fake_distance</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using fake_distance, distance between (0,0) and (3,4) is 1.00.
+Using fake_distance, distance between (-2,-3) and (4,1) is 1.00.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-1-4">
+<h2>Part 1.4<a class="headerlink" href="#part-1-4" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Note: The presented answer is a bit convoluted, but it is still valid and the value of it is that it documents the thought-process and manages to overcome the difficulty</p>
+</div></blockquote>
+<p>In the final exercise, I am tasked with combining Parts 1.1-1.3 with the data science library <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and plotting library <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. Let’s start by importing the libraries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we are given a definition of some data points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x  y
+0  2  3
+1  7  1
+2  0  0
+3  5  5
+4 -2  4
+</pre></div>
+</div>
+</div>
+</div>
+<p>If possible, I would like to reuse the <code class="docutils literal notranslate"><span class="pre">calculate_distance</span></code> function defined ealier. Let me first check if it works if I supply it with columns from the data frame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I am mixing variables here on purpose:</span>
+<span class="n">calculate_distance</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1.414214
+1    8.485281
+2    0.000000
+3    0.000000
+4    8.485281
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>It looks like it does, so I can solve this question in a somewhat silly manner by creating a dummy data frame with zeros only:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;zeros&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">dummy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dummy_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and simply invoke the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;distance_from_origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span><span class="n">dummy_df</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">],</span><span class="n">dummy_df</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data with distance_from_origin:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data with distance_from_origin:
+   x  y  distance_from_origin
+0  2  3              3.605551
+1  7  1              7.071068
+2  0  0              0.000000
+3  5  5              7.071068
+4 -2  4              4.472136
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let me also manually check for the last point whether the computed distance is correct:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_distance</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.47213595499958
+</pre></div>
+</div>
+</div>
+</div>
+<p>And finally, I now make a scatter plot of all the points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter plot of points&quot;</span><span class="p">)</span> <span class="c1"># adding title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c2f17f2966306d34d0be02ad59299c0e0dc9d3884456b883421aa4ec26612c05.png" src="../_images/c2f17f2966306d34d0be02ad59299c0e0dc9d3884456b883421aa4ec26612c05.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h1>
+<p>In this assignment I worked with distances between points and tested my ability to define variables, functions and working with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. I found the assignment to be quite straight-forward except for the last part, where it was not immediately clear to me how add a new column. In particular, it was a bit of a surprise to me that <code class="docutils literal notranslate"><span class="pre">distance_function</span></code> worked straight away when, instead of providing single values of coordinates, I provided several of them in one-go.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="13-assessment-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Assessment 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="14-assessment-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assessment 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 1: Feedback and model solution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">Feedback</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solution">Model solution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-1">Part 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-2">Part 1.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-3">Part 1.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-4">Part 1.4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Maciej Buze (based on notes by Eduard Campillo-Funollet and Dan Groose)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright © 2025 Maciej Buze.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
