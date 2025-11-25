@@ -20,4 +20,5 @@ chapters:
 - file: notebooks/13-assessment-1
 - file: notebooks/13-b-assignment-1-feedback-solution
 - file: notebooks/14-assessment-2
-#- file: notebooks/15-assessment-3
+- file: notebooks/14-b-assignment-2-feedback
+- file: notebooks/15-assessment-3
